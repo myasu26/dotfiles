@@ -6,7 +6,9 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 
 syntax enable
 "colorscheme koehler
-colorscheme desert
+"colorscheme desert
+colorscheme molokai
+set t_Co=256
 set number
 set expandtab
 set autoindent
@@ -20,6 +22,13 @@ if has('vim_starting')
         NeoBundleFetch 'Shougo/neobundle.vim'
         call neobundle#end()
 endif
+
+NeoBundle 'bling/vim-airline'
+NeoBundle 'edkolev/tmuxline.vim'
+let g:airline_enable_tmuxline=1
+let g:airline#extensions#tmuxline#enable=0
+let airline#extensions#tmuxline#color_template = 'normal'
+let g:tmuxline_preset='full'
 
 " solarized
 NeoBundle 'altercation/vim-colors-solarized'
