@@ -6,8 +6,8 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 
 syntax enable
 "colorscheme koehler
-"colorscheme desert
-colorscheme molokai
+"colorscheme molokai
+colorscheme desert
 set t_Co=256
 set number
 set expandtab
@@ -23,12 +23,73 @@ if has('vim_starting')
         call neobundle#end()
 endif
 
-NeoBundle 'bling/vim-airline'
-NeoBundle 'edkolev/tmuxline.vim'
-let g:airline_enable_tmuxline=1
-let g:airline#extensions#tmuxline#enable=0
-let airline#extensions#tmuxline#color_template = 'normal'
-let g:tmuxline_preset='full'
+"NeoBundle 'bling/vim-airline'
+"NeoBundle 'edkolev/tmuxline.vim'
+"let g:airline_enable_tmuxline=1
+"let g:airline#extensions#tmuxline#enable=0
+"let airline#extensions#tmuxline#color_template = 'normal'
+"let g:tmuxline_preset='full'
+NeoBundle 'itchyny/lightline.vim'
+let g:lightline = {
+                        \ 'colorscheme': 'landscape',
+                        \ 'mode_map': { 'c': 'NORMAL' },
+                        \ 'active': {
+                        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+                        \ },
+                        \ 'component_function': {
+                        \   'modified': 'MyModified',
+                        \   'readonly': 'MyReadonly',
+                        \   'fugitive': 'MyFugitive',
+                        \   'filename': 'MyFilename',
+                        \   'fileformat': 'MyFileformat',
+                        \   'filetype': 'MyFiletype',
+                        \   'fileencoding': 'MyFileencoding',
+                        \   'mode': 'MyMode',
+                        \ },
+                        \ 'separator': { 'left': '⮀', 'right': '⮂' },
+                        \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+                        \ }
+
+function! MyModified()
+        return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+        return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+endfunction
+
+function! MyFilename()
+        return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+                                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
+                                \  &ft == 'unite' ? unite#get_status_string() : 
+                                \  &ft == 'vimshell' ? vimshell#get_status_string() :
+                                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                                \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+        if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+                let _ = fugitive#head()
+                return strlen(_) ? '⭠ '._ : ''
+        endif
+        return ''
+endfunction
+
+function! MyFileformat()
+        return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+        return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+        return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+        return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 " solarized
 NeoBundle 'altercation/vim-colors-solarized'
@@ -52,11 +113,11 @@ NeoBundle 'mattn/webapi-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'mattn/emmet-vim'
 let g:user_emmet_settings = {
-    \    'variables': {
-    \      'lang': "ja"
-    \    },
-    \   'indentation': '  '
-    \ }
+                        \    'variables': {
+                        \      'lang': "ja"
+                        \    },
+                        \   'indentation': '  '
+                        \ }
 
 "NeoBundle 'nathanaelkane/vim-indent-guides'
 "
@@ -94,7 +155,7 @@ elseif  neobundle#is_installed('neocomplcache')
         let g:neocomplcache_enable_ignore_case = 1
         let g:neocomplcache_enable_smart_case = 1
         if !exists('g:neocomplcache_keyword_patterns')
-          let g:neocomplcache_keyword_patterns = {}
+                let g:neocomplcache_keyword_patterns = {}
         endif
         let g:neocomplcache_keyword_patterns._ = '\h\w*'
         let g:neocomplcache_enable_camel_case_completion = 1
