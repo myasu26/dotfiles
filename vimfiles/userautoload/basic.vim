@@ -22,7 +22,7 @@ syntax on
 
 
 "====================================Python=============================================="
-"$BJ]B8;~$K<+F0$G%A%'%C%/(B
+"保存時に自動でチェック
 "let g:PyFlakeOnWrite=1
 "let g:PyFlakeCheckers='pep8,mccabe,pyflakes'
 "let g:PyFlakeDefaultComplexity=10
