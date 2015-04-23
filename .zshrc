@@ -12,7 +12,7 @@ autoload -Uz colors
 colors
 
 # emacs 風キーバインドにする
-bindkey -e
+# bindkey -e
 # vi 風キーバインドにする
 bindkey -v
 
