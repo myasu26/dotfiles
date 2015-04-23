@@ -1,0 +1,13 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	grep = auto
+[core]
+	editor = vim -c \"set fenc=utf-8\"
+	excludesfile = /home/oreore/.gitignore
+[user]
+	name = myasu26
+	email = hotshot26jp@gmail.com
+[alias]
+	co = checkout
