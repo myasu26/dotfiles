@@ -39,7 +39,8 @@ if [[ -f $HOME/antigen/antigen.zsh ]]; then
   antigen bundle mollifier/anyframe
   #
   # # Load the theme.
-  antigen theme robbyrussell
+  #antigen theme robbyrussell
+  antigen theme suvash
   #
   # # Tell antigen that you're done.
   antigen apply
@@ -159,12 +160,16 @@ setopt interactive_comments
 #########################################
 ## エイリアス
 #
+# コンソール色変更ディレクトリ青　赤
+eval `dircolors ~/.colorrc`
+
 ## vim:set ft=zsh:
 alias vim="$HOME/local/bin/vim"
 #
-alias la='ls -a'
-alias ll='ls -l'
-alias lsa='ls -la'
+alias ls='ls --color=auto'
+alias la='ls -a --color=auto'
+alias ll='ls -l --color=auto'
+alias lsa='ls -la --color=auto'
 #
 alias rm='rm -i'
 alias cp='cp -i'
