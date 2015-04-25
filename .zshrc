@@ -160,7 +160,7 @@ setopt interactive_comments
 ## エイリアス
 #
 ## vim:set ft=zsh:
-#alias vim="$HOME/local/bin/vim"
+alias vim="$HOME/local/bin/vim"
 #
 alias la='ls -a'
 alias ll='ls -l'
