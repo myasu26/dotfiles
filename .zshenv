@@ -3,3 +3,9 @@ if [ -d ${HOME}/.rbenv  ] ; then
         export PATH
         eval "$(rbenv init -)"
 fi
+
+PATH=${HOME}/bin:${PATH}
+export PATH
+
+PATH=${HOME}/.tmux/plugins/tpm:${PATH}
+export PATH

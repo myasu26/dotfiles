@@ -16,12 +16,12 @@ command NBC NeoBundleClean
 " " molokai
 "NeoBundle 'tomasr/molokai'
 
-"NeoBundle 'bling/vim-airline'
-"NeoBundle 'edkolev/tmuxline.vim'
-"let g:airline_enable_tmuxline=1
-"let g:airline#extensions#tmuxline#enable=0
-"let airline#extensions#tmuxline#color_template = 'normal'
-"let g:tmuxline_preset='full'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'edkolev/tmuxline.vim'
+let g:airline_enable_tmuxline=1
+let g:airline#extensions#tmuxline#enable=0
+let airline#extensions#tmuxline#color_template = 'normal'
+let g:tmuxline_preset='full'
 
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {

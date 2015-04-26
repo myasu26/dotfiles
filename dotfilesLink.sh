@@ -6,3 +6,4 @@ ln -sf ~/dotfiles/.bashrc ~/.bashrc
 ln -sf ~/dotfiles/.zshenv ~/.zshenv
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.colorrc ~/.colorrc
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf

@@ -163,6 +163,9 @@ setopt interactive_comments
 # コンソール色変更ディレクトリ青　赤
 eval `dircolors ~/.colorrc`
 
+# tmux
+alias tmux="env LD_LIBRARY_PATH=~/bin/libevent/lib ~/bin/tmux/bin/tmux"
+
 ## vim:set ft=zsh:
 alias vim="$HOME/local/bin/vim"
 #
