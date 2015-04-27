@@ -10,8 +10,8 @@ export LANG=ja_JP.UTF-8
 # Load plugin 
 #---------------------------------------
 ## antigen
-if [ -f ~/.zsh/antigen/antigen.zsh ] ; then
-    source ~/.zsh/.zshrc.antigen
+if [ -f ~/antigen/antigen.zsh ] ; then
+    source ~/dotfiles/.zsh/.zshrc.antigen
 fi
 
 zstyle ":anyframe:selector:" use peco
@@ -30,9 +30,28 @@ function peco-select-history() {
   CURSOR=$#BUFFER
   zle clear-screen
 }
+
 zle -N peco-select-history
+
 bindkey '^r' peco-select-history
 
+bindkey '^xb' anyframe-widget-cdr
+bindkey '^x^b' anyframe-widget-checkout-git-branch
+
+bindkey '^xr' anyframe-widget-execute-history
+bindkey '^x^r' anyframe-widget-execute-history
+
+bindkey '^xi' anyframe-widget-put-history
+bindkey '^x^i' anyframe-widget-put-history
+
+bindkey '^xg' anyframe-widget-cd-ghq-repository
+bindkey '^x^g' anyframe-widget-cd-ghq-repository
+
+bindkey '^xk' anyframe-widget-kill
+bindkey '^x^k' anyframe-widget-kill
+
+bindkey '^xe' anyframe-widget-insert-git-branch
+bindkey '^x^e' anyframe-widget-insert-git-branch
 
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
@@ -42,9 +61,9 @@ autoload -Uz colors
 colors
 
 # emacs 風キーバインドにする
-# bindkey -e
+ bindkey -e
 # vi 風キーバインドにする
-bindkey -v
+#bindkey -v
 
 # ヒストリの設定
 HISTFILE=~/.zsh_history
@@ -59,49 +78,49 @@ SAVEHIST=1000000
 # %# "
 
 
-## 単語の区切り文字を指定する
-#autoload -Uz select-word-style
-#select-word-style default
-## ここで指定した文字は単語区切りとみなされる
-## / も区切りと扱うので、^W でディレクトリ１つ分を削除できる
-#zstyle ':zle:*' word-chars " /=;@:{},|"
-#zstyle ':zle:*' word-style unspecified
+# 単語の区切り文字を指定する
+autoload -Uz select-word-style
+select-word-style default
+# ここで指定した文字は単語区切りとみなされる
+# / も区切りと扱うので、^W でディレクトリ１つ分を削除できる
+zstyle ':zle:*' word-chars " /=;@:{},|"
+zstyle ':zle:*' word-style unspecified
 #
 #########################################
-## 補完
-## 補完機能を有効にする
-#autoload -Uz compinit
-#compinit
+# 補完
+# 補完機能を有効にする
+autoload -Uz compinit
+compinit
 #
-## 補完で小文字でも大文字にマッチさせる
-#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# 補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 #
-## ../ の後は今いるディレクトリを補完しない
-#zstyle ':completion:*' ignore-parents parent pwd ..
+# ../ の後は今いるディレクトリを補完しない
+zstyle ':completion:*' ignore-parents parent pwd ..
 #
-## sudo の後ろでコマンド名を補完する
-#zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-#                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-#
-## ps コマンドのプロセス名補完
-#zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
+# sudo の後ろでコマンド名を補完する
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
+# ps コマンドのプロセス名補完
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 #
 #
 #########################################
-## vcs_info
-#autoload -Uz vcs_info
-#autoload -Uz add-zsh-hook
-#
-#zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
-#zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-#
-#function _update_vcs_info_msg() {
-#    LANG=en_US.UTF-8 vcs_info
-#    RPROMPT="${vcs_info_msg_0_}"
-#}
-#add-zsh-hook precmd _update_vcs_info_msg
-#
-#
+# vcs_info
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+
+zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
+zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
+
+function _update_vcs_info_msg() {
+    LANG=en_US.UTF-8 vcs_info
+    RPROMPT="${vcs_info_msg_0_}"
+}
+add-zsh-hook precmd _update_vcs_info_msg
+
+
 #########################################
 ## オプション
 ## 日本語ファイル名を表示可能にする
@@ -117,27 +136,27 @@ setopt no_flow_control
 setopt interactive_comments
 #
 ## ディレクトリ名だけでcdする
-#setopt auto_cd
+setopt auto_cd
 #
 ## cd したら自動的にpushdする
-#setopt auto_pushd
-## 重複したディレクトリを追加しない
-#setopt pushd_ignore_dups
+setopt auto_pushd
+# 重複したディレクトリを追加しない
+setopt pushd_ignore_dups
 #
-## 同時に起動したzshの間でヒストリを共有する
-#setopt share_history
+# 同時に起動したzshの間でヒストリを共有する
+setopt share_history
 #
-## 同じコマンドをヒストリに残さない
-#setopt hist_ignore_all_dups
+# 同じコマンドをヒストリに残さない
+setopt hist_ignore_all_dups
 #
-## スペースから始まるコマンド行はヒストリに残さない
-#setopt hist_ignore_space
+# スペースから始まるコマンド行はヒストリに残さない
+setopt hist_ignore_space
 #
-## ヒストリに保存するときに余分なスペースを削除する
-#setopt hist_reduce_blanks
+# ヒストリに保存するときに余分なスペースを削除する
+setopt hist_reduce_blanks
 #
-## 高機能なワイルドカード展開を使用する
-#setopt extended_glob
+# 高機能なワイルドカード展開を使用する
+setopt extended_glob
 #
 #########################################
 ## キーバインド
