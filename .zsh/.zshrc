@@ -10,7 +10,7 @@ export LANG=ja_JP.UTF-8
 # Load plugin 
 #---------------------------------------
 ## antigen
-if [ -f ~/antigen/antigen.zsh ] ; then
+if [ -f ~/.antigen/antigen.zsh ] ; then
     source ~/dotfiles/.zsh/.zshrc.antigen
 fi
 
@@ -171,10 +171,10 @@ setopt extended_glob
 eval `dircolors ~/.colorrc`
 
 # tmux
-alias tmux="env LD_LIBRARY_PATH=~/bin/libevent/lib ~/bin/tmux/bin/tmux"
+# alias tmux="env LD_LIBRARY_PATH=~/bin/libevent/lib ~/bin/tmux/bin/tmux"
 
 ## vim:set ft=zsh:
-alias vim="$HOME/local/bin/vim"
+#alias vim="$HOME/local/bin/vim"
 #
 alias ls='ls --color=auto'
 alias la='ls -a --color=auto'

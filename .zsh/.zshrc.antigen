@@ -1,6 +1,6 @@
 # antigen
 
-source $HOME/antigen/antigen.zsh
+source $HOME/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
 #
@@ -13,8 +13,7 @@ antigen bundle mollifier/anyframe
 #
 # # Load the theme.
 #antigen theme robbyrussell
-antigen theme suvash
+antigen-theme suvash
 #
 # # Tell antigen that you're done.
 antigen apply
-fi

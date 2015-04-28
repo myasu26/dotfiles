@@ -5,9 +5,9 @@ if has('vim_starting')
         call neobundle#end()
 endif
 
-command NBI NeoBundleInstall
-command NBU NeoBundleUpdate
-command NBC NeoBundleClean
+command! NBI NeoBundleInstall
+command! NBU NeoBundleUpdate
+command! NBC NeoBundleClean
 
 " " mustang
 "NeoBundle 'croaker/mustang-vim'
@@ -92,7 +92,14 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimfiler'
 
 " vimで非同期初期
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc.vim', {
+  \ 'build' : {
+  \     'windows' : 'make -f make_mingw32.mak',
+  \     'cygwin' : 'make -f make_cygwin.mak',
+  \     'mac' : 'make -f make_mac.mak',
+  \     'unix' : 'make -f make_unix.mak',
+  \    },
+  \ }
 
 " Unite
 NeoBundle 'Shougo/unite.vim'
