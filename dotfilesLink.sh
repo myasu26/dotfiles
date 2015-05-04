@@ -7,4 +7,5 @@ ln -sf ~/dotfiles/.zsh/.zshenv ~/.zshenv
 ln -sf ~/dotfiles/.zsh/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.colorrc ~/.colorrc
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/.zsh/.peco.json ~/.peco/config.json
+#ln -sf ~/dotfiles/.zsh/.peco.json ~/.peco/config.json
+zsh ~/antigen.zsh
