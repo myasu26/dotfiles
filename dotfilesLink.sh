@@ -2,6 +2,9 @@
 
 curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/.antigen/antigen.zsh
 
+mkdir -p ~/.vim/bundle
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sfn ~/dotfiles/vimfiles ~/.vim
 #ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
