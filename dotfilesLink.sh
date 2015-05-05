@@ -1,11 +1,11 @@
 #!/usr/bin/zsh
 
-#mkdir -p ~/.antigen
-#curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/.antigen/antigen.zsh
+mkdir -p ~/.antigen
+curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/.antigen/antigen.zsh
 
-#curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
-#mv ~/.vim/bundle/neobundle.vim ~/dotfiles/vimfiles/bundle/
-#rm -rf ~/.vim
+curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+mv .vim/bundle ~/dotfiles/.vim/
+rm -rf ~/.vim
 
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sfn ~/dotfiles/.vim ~/.vim
