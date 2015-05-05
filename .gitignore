@@ -4,6 +4,9 @@ Thumbs.db
 # Ignore bundler config.
 /.bundle
 
+# Ignore vim bundle.
+/.vim/bundle
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
