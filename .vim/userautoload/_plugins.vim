@@ -1,13 +1,25 @@
+ " Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
 if has('vim_starting')
-        set runtimepath+=~/.vim/bundle/neobundle.vim
-        call neobundle#begin(expand('~/.vim/bundle/'))
-        NeoBundleFetch 'Shougo/neobundle.vim'
-        call neobundle#end()
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-command! NBI NeoBundleInstall
-command! NBU NeoBundleUpdate
-command! NBC NeoBundleClean
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
 
 " " mustang
 "NeoBundle 'croaker/mustang-vim'
@@ -94,10 +106,11 @@ NeoBundle 'Shougo/vimfiler'
 " vimで非同期初期
 NeoBundle 'Shougo/vimproc.vim', {
   \ 'build' : {
-  \     'windows' : 'make -f make_mingw32.mak',
+  \     'windows' : 'tools\\update-dll-mingw',
   \     'cygwin' : 'make -f make_cygwin.mak',
   \     'mac' : 'make -f make_mac.mak',
-  \     'unix' : 'make -f make_unix.mak',
+  \     'linux' : 'make',
+  \     'unix' : 'gmake',
   \    },
   \ }
 
@@ -197,3 +210,16 @@ NeoBundle 'tpope/vim-endwise'
 " snippets
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neosnippet'
+
+call neobundle#end()
+
+" Required:
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+
+NeoBundleCheck
+
+command! NBI NeoBundleInstall
+command! NBU NeoBundleUpdate
+command! NBC NeoBundleClean
